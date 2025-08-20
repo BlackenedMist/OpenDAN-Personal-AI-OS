@@ -13,3 +13,5 @@ venv-linux
 venv_test
 
 rootfs/test_doc/
+.DS_Store
+.DS_Store
