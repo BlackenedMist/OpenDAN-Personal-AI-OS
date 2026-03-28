@@ -20,7 +20,11 @@ async def jarvis_main():
     #     msg = msg_queue.get()
     #     msg_resp = agent.process_msg(msg)
     #     msg_queue.reply(msg_resp)
-    await jarvis_agent.run()
+    msg_queue = MsgQueue("agent.jarvis")
+    while True:
+        msg = await msg_queue.pop_message()
+        msg_resp = await jarvis_agent.process_msg(msg)
+        await msg_queue.reply_message(msg.msg_id,msg_resp)
 
 
 if __name__ == "__main__":
